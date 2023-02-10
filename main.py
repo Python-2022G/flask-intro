@@ -1,15 +1,14 @@
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/home", methods=['GET'])
 def hello():
-   return "<h1>Hello World!</h1>"
+   args = request.args
+   name = args['name']
 
-@app.route("/about")
-def about():
-   return "<h1>About Page</h1>"
-   
+   return {'name': name}
+
 
 if __name__ == "__main__":
-   app.run()
+   app.run(debug=True)
