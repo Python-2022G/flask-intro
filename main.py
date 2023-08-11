@@ -23,7 +23,15 @@ def bot():
    if request.method == "POST":
       data = request.get_json()
 
-      print(data)
+      chat_id = data['message']['chat']['id']
+
+      url = 'https://api.telegram.org/bot6217675093:AAFKzEEhkFi-nQqkrk7LTyyBgIyww7d8UtQ/sendMessage'
+      payload = {
+         "chat_id": chat_id,
+         'text': 'salom'
+      }
+
+      requests.get(url, params=payload)
 
 
       return {"message": "ok"}
