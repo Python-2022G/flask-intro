@@ -1,4 +1,6 @@
 from flask import Flask, request
+import requests
+
 
 app = Flask(__name__)
 
@@ -16,5 +18,12 @@ def hello():
    return {'name': name}
 
 
-if __name__ == "__main__":
-   app.run(debug=True)
+@app.route('/bot', methods=["POST"])
+def bot():
+   if request.method == "POST":
+      data = request.get_json()
+
+      print(data)
+
+
+      return {"message": "ok"}
